@@ -1,21 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { io } from 'socket.io-client';
+import { Route, Routes } from 'react-router-dom';
 
-var socket = io();
 
-const App = () => {
+
+const Start = () => {
 
   return (
-    <div className='wholeGame'>
+    <div>
       <h1 className='title'>Liars Dice</h1>
-      <button href='/game'>Play Game</button>
     </div>
   );
 
 
 }
-
-
-
-ReactDOM.render(<App />, document.getElementById('root'));
