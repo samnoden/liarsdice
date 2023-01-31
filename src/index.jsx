@@ -1,21 +1,30 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { io } from 'socket.io-client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App.jsx';
 
-var socket = io();
+// var socket = io();
 
-const App = () => {
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)
 
-  return (
-    <div className='wholeGame'>
-      <h1 className='title'>Liars Dice</h1>
-      <button href='/game'>Play Game</button>
-    </div>
-  );
+// const App = () => {
+
+//   return (
+//     <div className='wholeGame'>
+//       <h1 className='title'>Liars Dice</h1>
+//       <button href='/game'>Play Game</button>
+//     </div>
+//   );
 
 
-}
+// }
 
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
