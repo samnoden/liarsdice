@@ -24,6 +24,8 @@ var currentGuess;
 var gameOver = false;
 
 var total;
+
+var turnIndex = 0;
 // turns based on io.to(socketID).emit(whatever)
 // https://socket.io/docs/v4/emit-cheatsheet/
 
@@ -41,7 +43,7 @@ io.on('connection', (socket) => {
 
   socket.on('begin', ()=>{
     io.emit('start-game');
-    currentTurn = playersArray[0];
+    currentTurn = playersArray[turnIndex];
   })
 
   socket.on('dice rolled', (dice) => {
@@ -52,11 +54,20 @@ io.on('connection', (socket) => {
 
   socket.on('turn over', guess=> {
     // switch to next turn
-    if (currentTurn === playersArray[0]){
-      currentTurn = playersArray[1];
+
+
+    // if (currentTurn === playersArray[0]){
+    //   currentTurn = playersArray[1];
+    // } else {
+    //   currentTurn = playersArray[0];
+    // }
+
+    if (turnIndex === playersArray.length - 1) {
+      turnIndex = 0;
     } else {
-      currentTurn = playersArray[0];
+      turnIndex++;
     }
+    currentTurn = playersArray[turnIndex];
     // if raise
     io.to(currentTurn).emit('turn');
     io.emit('current guess', guess);
@@ -80,11 +91,20 @@ io.on('connection', (socket) => {
     io.emit('capped', total);
 
     let otherPlayer;
-    if (currentTurn === playersArray[0]) {
-      otherPlayer = playersArray[1];
+
+    if (turnIndex !== 0) {
+      otherPlayer = playersArray[turnIndex - 1];
     } else {
-      otherPlayer = playersArray[0];
+      otherPlayer = playersArray[playersArray.length-1];
     }
+
+    // if (currentTurn === playersArray[0]) {
+    //   otherPlayer = playersArray[1];
+    // } else {
+    //   otherPlayer = playersArray[0];
+    // }
+
+
     if (total.length >= currentGuess[0]) {
       console.log(socket.id, 'was wrong');
       io.to(currentTurn).emit('lost');
@@ -94,6 +114,7 @@ io.on('connection', (socket) => {
       io.to(otherPlayer).emit('lost');
       io.to(currentTurn).emit('won');
       currentTurn = otherPlayer;
+      turnIndex = playersArray.indexOf(currentTurn);
       console.log(otherPlayer, 'was wrong');
     }
 
@@ -121,8 +142,9 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
-    // playersArray.splice(playersArray.indexOf(socket.id));
+    playersArray.splice(playersArray.indexOf(socket.id));
     players--;
+    console.log(playersArray);
   });
 });
 
