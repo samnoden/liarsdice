@@ -129,12 +129,10 @@ const App = () => {
 
 
   socket.on('game over', ()=> {
-    if (diceCount > 0) {
-      setResult("YOU WIN");
-    } else {
+    if (diceCount === 0) {
       setResult("YOU LOST");
+      setStarted(false);
     }
-    setStarted(false);
   })
 
   const handleChange = (val) => {
