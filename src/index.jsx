@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { io } from 'socket.io-client';
 
 // notes for next time:
-// figure out losing a dice/sending turn/resetting other things after cap is called
-// make cap only show up after the first turn so someone isn't able to call cap on 0 0s
+// set up rooms, add play again button, properly reset variables,
 
 var socket = io();
 
