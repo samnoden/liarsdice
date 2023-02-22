@@ -4,19 +4,20 @@ const http = require('http').Server(app);
 const port = process.env.PORT || 3000;
 const path = require("path");
 
-// initialize new instance of socket.io by passing the HTTP server object
 const io = require('socket.io')(http);
 
 var gameDice = [];
 
 app.use(express.static(__dirname + '/../public'));
 
+//player count and list of players
 var players = 0;
 
 var playersArray = [];
 
 var currentTurn;
 
+// track if ones wild in current round
 var onesWild;
 
 var currentGuess;
