@@ -124,7 +124,7 @@ io.on('connection', (socket) => {
       if (!gameOver) {
         io.emit('new roll');
       }
-    }, 4000);
+    }, 3500);
 
 
     // send a specific emit to either winner and loser that makes their dice count go down
