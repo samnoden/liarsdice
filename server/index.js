@@ -35,7 +35,7 @@ var turnIndex = 0;
 
 io.on('connection', (socket) => {
   //log when a user connects
-  console.log('user connected');
+  console.log('user connected', socket.id);
   players++;
   playersArray.push(socket.id);
   console.log(playersArray);
