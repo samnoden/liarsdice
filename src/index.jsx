@@ -5,6 +5,12 @@ import { io } from 'socket.io-client';
 // notes for next time:
 // set up rooms, add play again button, properly reset variables,
 
+
+// set up room specific socket on's ,
+// create a function that resets all states
+// clear up all these states
+
+
 var socket = io();
 
 const App = () => {
