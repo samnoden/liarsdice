@@ -11,6 +11,14 @@ var socket = io();
 // room name will be 'default'
 
 const App = () => {
+
+  // what needs to be kept track of:
+  // dice and dice count
+  const [dice, setDice] = useState([]);
+  const [diceCount, setDiceCount] = useState(0);
+  // game dice
+  // perhaps current players and current turn (see the order)
+
   return (
     <div className='wholeGame'>
       <h1 className='title'>Liars Dice</h1>
