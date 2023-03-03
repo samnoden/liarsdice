@@ -19,6 +19,12 @@ const App = () => {
   // game dice
   // current guess
   // perhaps current players and current turn (see the order)
+
+
+  // When 'start game' button is clicked
+  // Make sure the button doesn't show up as soon as you lose if game is still going on
+  // in case you lose and game still goes on should continue to show you the game
+
   const startGame = () => {
     console.log('Game Started');
     setDiceCount(5);
