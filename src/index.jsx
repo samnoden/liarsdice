@@ -17,11 +17,17 @@ const App = () => {
   const [dice, setDice] = useState([]);
   const [diceCount, setDiceCount] = useState(0);
   // game dice
+  // current guess
   // perhaps current players and current turn (see the order)
+  const startGame = () => {
+    console.log('Game Started');
+    setDiceCount(5);
+  }
 
   return (
     <div className='wholeGame'>
       <h1 className='title'>Liars Dice</h1>
+      {diceCount === 0 && <button onClick={()=>startGame()}>Start Game</button>}
     </div>
   );
 }
