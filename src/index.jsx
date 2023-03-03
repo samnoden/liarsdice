@@ -4,7 +4,11 @@ import { io } from 'socket.io-client';
 
 var socket = io();
 
-// either set this page up to seperate by room or have an outer page for that
+// set up an outer page to set username and choose room to play in
+
+// in this edition (before adding outer room page),
+// users will use their socket.id for a username and
+// room name will be 'default'
 
 const App = () => {
   return (
