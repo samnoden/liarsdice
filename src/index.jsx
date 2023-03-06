@@ -25,9 +25,12 @@ const App = () => {
   // Make sure the button doesn't show up as soon as you lose if game is still going on
   // in case you lose and game still goes on should continue to show you the game
 
+  // add a ready up button and a list of players ready that will become the turn dashboard
+
   const startGame = () => {
     console.log('Game Started');
     setDiceCount(5);
+
   }
 
   return (
