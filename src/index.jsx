@@ -27,6 +27,10 @@ const App = () => {
   // in case you lose and game still goes on should continue to show you the game
 
   // add a ready up button and a list of players ready that will become the turn dashboard
+  const ready = () => {
+    console.log('player ready');
+  }
+
 
   const startGame = () => {
     console.log('Game Started');
@@ -37,6 +41,7 @@ const App = () => {
   return (
     <div className='wholeGame'>
       <h1 className='title'>Liars Dice</h1>
+      {diceCount === 0 && <button onClick={()=>ready()}>Ready?</button>}
       {diceCount === 0 && <button onClick={()=>startGame()}>Start Game</button>}
     </div>
   );
