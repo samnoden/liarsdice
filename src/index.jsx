@@ -16,8 +16,8 @@ const App = () => {
   // dice and dice count
   const [dice, setDice] = useState([]);
   const [diceCount, setDiceCount] = useState(0);
+  const [currentGuess, setCurrentGuess] = useState([]);
   // game dice
-  // current guess
   // perhaps current players and current turn (see the order)
 
 
