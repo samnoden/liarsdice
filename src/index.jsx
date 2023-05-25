@@ -105,8 +105,12 @@ const App = () => {
     // cap event
 
     // must not be first call
+    if (currentGuess[0] === 0) {
+      alert('Cannot call cap on first guess!')
+    } else {
+      socket.emit('call cap')
+    }
 
-    socket.emit('call cap')
   }
 
 
